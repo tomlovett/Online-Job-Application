@@ -3,7 +3,7 @@ angular.module('JobApp', [])
 angular.module('JobApp')
 	.controller('homeController', ['$scope', '$http', function($scope, $http){
 		$scope.submitApplication = function() {
-			$http.post('/api/applicant', $scope.applicant)
+			$http.post('api/applicant', $scope.applicant)
 				.then(function(returnData) {
 					console.log(returnData)
 					$scope.applicant = {}
