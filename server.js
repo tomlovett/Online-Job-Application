@@ -23,12 +23,8 @@ app.get('/applicants', function(req, res){
 
 // creates and applicant
 app.post('/api/applicant', function(req, res){
-	console.log(req.body)
-	// Here is where you need to get the data
-	// from the post body and store it in the database
-	res.send('No funciona');
+	res.sendFile('html/success.html', {root: './public'})
 });
-
 
 
 // Creating Server and Listening for Connections \\
