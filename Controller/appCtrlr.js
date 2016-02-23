@@ -24,7 +24,10 @@ function loadApplicants(req, res) {
 
 function delApplicant(req, res) {
 	var app = Applicant.findById(req.body._id, function(err, doc) {
-		Applicant.remove(doc)
+		console.log(doc)
+		Applicant.remove(doc, function() {
+			console.log('removed!')
+		})
 	})
 }
 
