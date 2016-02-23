@@ -21,8 +21,10 @@ app.get('/', function(req, res) {
 
 // displays a list of applicants
 app.get('/applicants', function(req, res){
-	res.sendFile('html/applicants', {root : './public'});
+	res.sendFile('html/applicants.html', {root : './public'});
 });
+
+app.get('/api/load-applicants', appCtrlr.loadApplicants);
 
 // creates and applicant
 app.post('/api/submit', appCtrlr.newApplicant);

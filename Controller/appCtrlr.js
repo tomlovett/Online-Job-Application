@@ -10,12 +10,19 @@ function newApplicant(req, res) {
 	})
 
 	applicant.save(function(err, storedData) {
-		res.send(storedData)
+		console.log('applicant data saved!')
 	})
 
 	res.sendFile('html/success.html', {root : './public'});
 }
 
+function loadApplicants(req, res) {
+	var applicants = appModels.Applicant.find({}, function(err, data) {
+		res.send(data)
+	})
+}
+
 module.exports = {
-	newApplicant : newApplicant
+	newApplicant : newApplicant,
+	loadApplicants : loadApplicants
 }
