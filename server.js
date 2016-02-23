@@ -1,6 +1,7 @@
 // Requires \\
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose')
 
 // Create Express App Object \\
 var app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 // Routes \\
+mongoose.connect('mongodb://localhost/BigPharma')
 var appCtrlr = require('./Controller/appCtrlr.js')
 
 app.get('/', function(req, res) {
@@ -23,7 +25,7 @@ app.get('/applicants', function(req, res){
 });
 
 // creates and applicant
-app.post('/api/applicant', appCtrlr.newApplicant);
+app.post('/api/submit', appCtrlr.newApplicant);
 
 app.get('/success', function(req, res) {
 	res.sendFile('html/success.html', {root : './public'});

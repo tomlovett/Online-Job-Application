@@ -12,7 +12,7 @@
     <div class="container">
       <h1>Omega 3 Studios</h1>
       <h2>Application for Senior Web Developer</h2>
-      <form id="application-form" ng-submit="submitApplication()">
+      <form id="application-form" method="post" action="/api/submit">
         <div class="form-group">
           <input ng-model="applicant.name" name="name" type="text" placeholder="Name" class="form-control"/>
         </div>
