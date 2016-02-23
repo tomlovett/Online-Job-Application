@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 // Routes \\
+var appCtrlr = require('./Controller/appCtrlr.js')
 
 app.get('/', function(req, res) {
 	res.sendFile('html/index.html', {root : './public'});
@@ -22,9 +23,7 @@ app.get('/applicants', function(req, res){
 });
 
 // creates and applicant
-app.post('/api/applicant', function(req, res){
-	res.sendFile('html/success.html', {root: './public'})
-});
+app.post('/api/applicant', appCtrlr.newApplicant);
 
 
 // Creating Server and Listening for Connections \\
