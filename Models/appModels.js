@@ -8,6 +8,4 @@ var appSchema = mongoose.Schema({
 	why    : String,
 })
 
-module.exports = {
-	Applicant : mongoose.model('Applicant', appSchema)
-}
+module.exports = mongoose.model('Applicant', appSchema)

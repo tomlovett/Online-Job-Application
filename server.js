@@ -15,23 +15,26 @@ app.use(express.static(__dirname + '/public'));
 mongoose.connect('mongodb://localhost/BigPharma')
 var appCtrlr = require('./Controller/appCtrlr.js')
 
+// Statis Pages
 app.get('/', function(req, res) {
 	res.sendFile('html/index.html', {root : './public'});
 });
 
-// displays a list of applicants
 app.get('/applicants', function(req, res){
 	res.sendFile('html/applicants.html', {root : './public'});
 });
 
-app.get('/api/load-applicants', appCtrlr.loadApplicants);
-
-// creates and applicant
-app.post('/api/submit', appCtrlr.newApplicant);
-
 app.get('/success', function(req, res) {
 	res.sendFile('html/success.html', {root : './public'});
 })
+
+// API
+app.get('/api/load-applicants', appCtrlr.loadApplicants);
+
+app.post('/api/submit', appCtrlr.newApplicant);
+
+app.post('/api/delete', appCtrlr.delApplicant)
+
 
 
 // Creating Server and Listening for Connections \\

@@ -12,7 +12,9 @@
     <div class="container">
       <h1>Applicants</h1>
       <ul id="applications" class="list-unstyled">
-        <li>Applicants should go here.</li>
+        <li ng-repeat="person in applicants">{{person.name}}
+          <button ng-click="deleteMe(person)">Derp!</button>
+        </li>
       </ul>
     </div>
 	  

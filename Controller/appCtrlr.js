@@ -1,7 +1,7 @@
-var appModels = require('../Models/appModels.js')
+var Applicant = require('../Models/appModels.js')
 
 function newApplicant(req, res) {
-	var applicant = new appModels.Applicant({
+	var applicant = new Applicant({
 			name   : req.body.name,
 			bio    : req.body.bio,
 			skills : req.body.skills,
@@ -17,12 +17,19 @@ function newApplicant(req, res) {
 }
 
 function loadApplicants(req, res) {
-	var applicants = appModels.Applicant.find({}, function(err, data) {
+	var applicants = Applicant.find({}, function(err, data) {
 		res.send(data)
 	})
 }
 
+function delApplicant(req, res) {
+	var app = Applicant.findById(req.body._id, function(err, doc) {
+		Applicant.remove(doc)
+	})
+}
+
 module.exports = {
-	newApplicant : newApplicant,
-	loadApplicants : loadApplicants
+	newApplicant   : newApplicant,
+	loadApplicants : loadApplicants,
+	delApplicant   : delApplicant
 }

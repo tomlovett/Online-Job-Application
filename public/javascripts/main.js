@@ -8,8 +8,10 @@ angular.module('JobApp')
 	.controller('applicantController', ['$scope', '$http', function($scope, $http) {
 		$http.get('/api/load-applicants')
 			.then(function(returnData) {
-				console.log(returnData)
 				$scope.applicants = returnData.data
-				console.log('dynomite!! :', $scope.applicants)		
 			})
+
+		$scope.deleteMe = function(applicant) {
+			$http.post('/api/delete', applicant)
+		}
 	}]);
