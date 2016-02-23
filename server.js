@@ -19,11 +19,15 @@ app.get('/', function(req, res) {
 
 // displays a list of applicants
 app.get('/applicants', function(req, res){
-	res.sendFile('html/applicants.html', {root : './public'});
+	res.sendFile('html/applicants', {root : './public'});
 });
 
 // creates and applicant
 app.post('/api/applicant', appCtrlr.newApplicant);
+
+app.get('/success', function(req, res) {
+	res.sendFile('html/success.html', {root : './public'});
+})
 
 
 // Creating Server and Listening for Connections \\

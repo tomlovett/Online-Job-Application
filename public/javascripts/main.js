@@ -7,6 +7,7 @@ angular.module('JobApp')
 				.then(function(returnData) {
 					console.log(returnData)
 					$scope.applicant = {}
+					$http.get('/success')
 				})
 		}
 	}]);
