@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 mongoose.connect('mongodb://localhost/BigPharma')
 var appCtrlr = require('./Controller/appCtrlr.js')
 
-// Statis Pages
+// Static Pages
 app.get('/', function(req, res) {
 	res.sendFile('html/index.html', {root : './public'});
 });
@@ -28,12 +28,17 @@ app.get('/success', function(req, res) {
 	res.sendFile('html/success.html', {root : './public'});
 })
 
-// API
-app.get('/api/load-applicants', appCtrlr.loadApplicants);
+app.get('/:userID', appCtrlr.byUserID)
 
-app.post('/api/submit', appCtrlr.newApplicant);
+// API
+app.get('/api/load-applicants', appCtrlr.loadApplicants)
+
+app.post('/api/submit', appCtrlr.newApplicant)
 
 app.post('/api/delete', appCtrlr.delApplicant)
+
+// app.get('/api/user', appCtrlr.loadIndividual)
+// anticipating calling data for /:userID page, though it is passed automatically anyway through .byUserID
 
 
 
