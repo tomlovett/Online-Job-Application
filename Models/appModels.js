@@ -5,7 +5,7 @@ var appSchema = mongoose.Schema({
 	bio    : String,
 	skills : Array,
 	exp    : Number,
-	why    : String,
+	why    : String
 })
 
 module.exports = mongoose.model('Applicant', appSchema)

@@ -14,25 +14,21 @@ angular.module('JobApp')
 
 
 		$scope.deleteMe = function(applicant) {
-			$http.post('/api/delete', applicant)   // functional
+			$http.post('/api/delete', applicant)
 			var index = $scope.applicants.indexOf(applicant)
-			$scope.applicants.splice(index, 1) // easier/faster than updating from server
-
-			// re-loading from server, less efficient
-			// $http.get('/api/load-applicants')
-			// 	.then(function(returnData) {
-			// 		$scope.applicants = returnData.data
-			// 	})
+			$scope.applicants.splice(index, 1) 
+			// easier/faster than updating from server
 		}
 }]);
 
 angular.module('JobApp')
 	.controller('profileController', ['$scope', '$http', function($scope, $http) {
 
-		// how to connect client/html to the data? ID is in the url, document is passed to the site.
+		"56cddefda8f7dbb5043065b3" // dummy ID
+		var user = {userID: window.location.pathname.slice(1)}
 
-		// $http.get('/api/')
-		// 	.then(function(returnData) {
-		// 		$scope.applicant = returnData.data
-		// 	})
+		$http.post('/api/load-individual', user)
+			.then(function(returnData) {
+				$scope.applicant = returnData.data
+			})
 	}])

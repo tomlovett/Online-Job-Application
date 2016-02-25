@@ -30,21 +30,15 @@ app.get('/success', function(req, res) {
 
 app.get('/:userID', appCtrlr.byUserID)
 
-// API
+// Data
 app.get('/api/load-applicants', appCtrlr.loadApplicants)
-
+app.post('/api/load-individual', appCtrlr.loadIndividual)
 app.post('/api/submit', appCtrlr.newApplicant)
-
 app.post('/api/delete', appCtrlr.delApplicant)
-
-// app.get('/api/user', appCtrlr.loadIndividual)
-// anticipating calling data for /:userID page, though it is passed automatically anyway through .byUserID
-
 
 
 // Creating Server and Listening for Connections \\
 var port = 3000
 app.listen(port, function(){
   console.log('Server running on port ' + port);
-
 })

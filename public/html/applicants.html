@@ -12,7 +12,8 @@
     <div class="container">
       <h1>Applicants</h1>
       <ul id="applications" class="list-unstyled">
-        <li ng-repeat="person in applicants">{{person.name}}
+        <li ng-repeat="person in applicants">
+          <a href="/{{person._id}}">{{person.name}}</a>
           <button ng-click="deleteMe(person)">Derp!</button>
         </li>
       </ul>
